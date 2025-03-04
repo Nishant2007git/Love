@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shaysha - My Eternal Love</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --main-color: #ff69b4;
+            --secondary-color: #ff1493;
+            --gold: #ffd700;
+        }
+        body {
+        font-family: 'Dancing Script', cursive;
+        background: #fff0f5;
+        margin: 0;
+        overflow-x: hidden;
+    }
+
+    /* Romantic Header */
+    .header {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: linear-gradient(rgba(11, 205, 85, 0.7), rgba(253, 24, 146, 0.7)),
+                url('pic4.jpg'); /* Changed from Unsplash URL to your file */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    color: white;
+}
+
+    .title {
+        font-size: 5rem;
+        text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+        animation: heartbeat 1.5s infinite;
+        text-align: center;
+    }
+
+    /* Shaysha Special Animation */
+    .Shaysha-name {
+        color: var(--gold);
+        font-size: 6rem;
+        display: inline-block;
+        transform-origin: center;
+    }
+
+    /* Memories Timeline */
+    .timeline {
+        padding: 50px 20px;
+        position: relative;
+        background: #fff8fb;
+    }
+
+    .timeline-item {
+        padding: 30px;
+        margin: 40px auto;
+        width: 70%;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(255,105,180,0.2);
+        transform: translateX(50px);
+        opacity: 0;
+        transition: all 1s;
+    }
+
+    /* Photo Gallery */
+    .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 15px;
+        padding: 30px;
+    }
+
+    .photo {
+        position: relative;
+        overflow: hidden;
+        border-radius: 15px;
+        transition: transform 0.3s;
+        cursor: pointer;
+    }
+
+    .photo img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        transition: transform 0.3s;
+    }
+
+    /* Love Letter Section */
+    .love-letter {
+        background: white;
+        padding: 40px;
+        margin: 50px auto;
+        width: 80%;
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba(255,105,180,0.1);
+        position: relative;
+    }
+
+    /* Animations */
+    @keyframes heartbeat {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+    }
+
+    .floating-hearts span {
+        position: fixed;
+        pointer-events: none;
+        animation: float 3s linear infinite;
+        opacity: 0;
+        font-size: 24px;
+    }
+
+    @keyframes float {
+        0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+        100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+    }
+
+    /* Custom Cursor */
+    body {
+        cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%23ff69b4" d="M12 4.248c-3.148-5.402-12-3.825-12 2.944 0 4.661 5.571 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-6.792-8.875-8.306-12-2.944z"/></svg>'), auto;
+    }
+</style>
+        
+      
+</head>
+<body>
+    <!-- Floating Hearts Container -->
+    <div class="floating-hearts"></div>
+
+    <!-- Header Section -->
+   <!-- Header Section -->
+<header class="header">
+    <h1 class="title">
+        Forever Yours,<br>
+        <span class="Shaysha-name">Shaysha</span>
+    </h1>
+    <p class="subtitle">You're My Always and Forever</p>
+    <div class="scroll-prompt">▼ Scroll Down ▼</div>
+</header>
+
+<!-- Our Story -->
+<section class="timeline">
+    <div class="timeline-item">
+        <h3>Our First Meeting 💘</h3>
+        <p>That magical day on [Date] when our eyes first met...</p>
+    </div>
+    <div class="timeline-item">
+        <h3>First Date 🌹</h3>
+        <p>Remember our special date at [Location]...</p>
+    </div>
+    <!-- Add more timeline items -->
+</section>
+
+<!-- Photo Gallery -->
+<section class="gallery">
+    <!-- Add your photos here -->
+    <div class="photo">
+        <img src="pic4.jpg" alt="Our Memory">
+    </div>
+</section>
+
+<!-- Interactive Love Letter -->
+<section class="love-letter">
+    <h2>My Dearest Shisha,</h2>
+    <p id="dynamicMessage">Every moment with you is...</p>
+    <button onclick="showMoreLove()">Click for More Love 💖</button>
+</section>
+
+<!-- Love Counter -->
+<div class="love-counter">
+    I've loved you for <span id="loveDays">0</span> days!
+</div>
+
+<script>
+    // Floating Hearts Animation
+    function createHearts() {
+        const heartsContainer = document.querySelector('.floating-hearts');
+        const heartEmojis = ['❤️', '💖', '💕', '💞', '💓'];
+        
+        setInterval(() => {
+            const heart = document.createElement('span');
+            heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+            heartsContainer.appendChild(heart);
+            
+            setTimeout(() => heart.remove(), 5000);
+        }, 300);
+    }
+
+    // Dynamic Love Messages
+    const messages = [
+        "You make my world complete",
+        "Your smile is my favorite sight",
+        "I cherish every moment with you",
+        "You're my forever and always",
+        "My love for you grows daily"
+    ];
+
+    let messageIndex = 0;
+    function cycleMessages() {
+        document.getElementById('dynamicMessage').textContent = messages[messageIndex];
+        messageIndex = (messageIndex + 1) % messages.length;
+    }
+
+    // Love Calculator
+    function showMoreLove() {
+        confetti({
+            particleCount: 100,
+            spread: 70,
+            origin: { y: 0.6 },
+            colors: ['#ff69b4', '#ffd700']
+        });
+        cycleMessages();
+    }
+
+    // Timeline Animation
+    window.addEventListener('scroll', () => {
+        document.querySelectorAll('.timeline-item').forEach(item => {
+            const rect = item.getBoundingClientRect();
+            if(rect.top < window.innerHeight * 0.8) {
+                item.style.opacity = 1;
+                item.style.transform = 'translateX(0)';
+            }
+        });
+    });
+
+    // Love Day Counter
+    const startDate = new Date('2024-06-01'); // Set your relationship start date
+    function updateLoveDays() {
+        const today = new Date();
+        const diffTime = Math.abs(today - startDate);
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        document.getElementById('loveDays').textContent = diffDays;
+    }
+
+    // Initialize
+    window.addEventListener('load', () => {
+        createHearts();
+        updateLoveDays();
+        setInterval(cycleMessages, 3000);
+        setInterval(updateLoveDays, 86400000);
+    });
+</script>
+
+<!-- Add these for enhanced features -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
